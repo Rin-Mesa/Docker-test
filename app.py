@@ -15,8 +15,13 @@ IMG_DIR = os.path.join(BASE_DIR, 'img')
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key')
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+if __name__ == '__main__':
+    os.makedirs(CSS_DIR, exist_ok=True)
+    os.makedirs(IMG_DIR, exist_ok=True)
+    init_db()
+    add_sample_data()
+    app.run(host='0.0.0.0', port=5000, debug=True)
+
 
 # ------------------------
 # Database Helpers
