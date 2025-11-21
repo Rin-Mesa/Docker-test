@@ -1,0 +1,8 @@
+[
+  {
+    "id": "ca226fba-1f1e-4bd2-92b5-af68d2068c86",
+    "email": "admin@example.com",
+    "password": "scrypt:32768:8:1$oIUwnKQ2jWSbztXU$94814fdc58da556e27ac2ec4301bad896668d04b0d6b7b882e9032d7b3e8770b5a124b92d6c2e5a5191d14c243b9593e5c9d735a1b7479bc1e1f90328dfae7f1",
+    "isAdmin": true
+  }
+]

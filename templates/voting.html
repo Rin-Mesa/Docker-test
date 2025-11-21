@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; background-color: #333; padding: 10px 70px; color: white; }
+        .navbar a { color: #f2f2f2; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; font-weight: bold; margin: 0 10px; }
+        .navbar a:hover { background-color: #ddd; color: black; border-radius: 10px; }
+        header { background: #2f83d7c8; color: white; padding: 10px 20px; text-align: center; }
+        h2 { text-align: center; margin-top: 20px; }
+        .candidates { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); margin: 20px 0; padding: 0 10px; justify-items: center; align-items: center; }
+        .candidate { text-align: center; margin: 15px; background: white; padding: 15px; border-radius: 8px; width: 80%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .candidate img { border-radius: 50%; margin-bottom: 10px; width: 100px; height: 100px; object-fit: cover; }
+        .candidate button { background-color: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 10px; }
+        .candidate button:hover { background-color: #218838; }
+        .flash { color: #b00020; text-align: center; margin-top: 10px; }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <h2>Voting</h2>
+    <div class="page">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('results') }}">Results</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</nav>
+<header>
+    <h1>Choose one for your favorite teacher.</h1>
+</header>
+
+<h2>Coding Trainer</h2>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="flash">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<section class="candidates">
+    {% for c in candidates %}
+    <div class="candidate">
+        <img src="{{ c['image_path'] }}" alt="">
+        <h2>{{ c['name'] }}</h2>
+        <form method="post" action="{{ url_for('vote', candidate_id=c['id']) }}">
+            <button type="submit">Vote</button>
+        </form>
+    </div>
+    {% endfor %}
+</section>
+</body>
+</html>

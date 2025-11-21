@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Voting System</title>
+    <link rel="stylesheet" href="/CSS/style.css">
+</head>
+<body>
+    <div class="container">
+        <img src="/img/image.png" alt="">
+        <div class="text">
+            <h1>Welcome Online Voting System</h1>
+            <p>Participate in elections easily and securely from anywhere. Log in or register to get started!</p>
+            <div class="btn-group">
+                <a href="{{ url_for('login') }}"><button class="btn">Log In</button></a>
+                <a href="{{ url_for('register') }}"><button class="btn">Register</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

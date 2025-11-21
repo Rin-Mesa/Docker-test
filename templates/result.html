@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        .navbar { display: flex; justify-content: end; align-items: center; background-color: #333; padding: 10px 70px; color: white; }
+        .navbar a { color: #f2f2f2; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; font-weight: bold; margin: 0 10px; }
+        .navbar a:hover { background-color: #2e37e9; color: white; border-radius: 10px; }
+        h1 { text-align: center; margin-top: 20px; }
+        p { text-align: center; font-size: 18px; }
+        .results { background-color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); width: 70%; padding: 20px; margin-top: 30px; margin-left: auto; margin-right: auto; border-radius: 8px; }
+        .results h2 { margin-bottom: 15px; }
+        .results table { width: 100%; border-collapse: collapse; }
+        .results th, .results td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; border-left: 1px solid #ddd; border-right: 1px solid #ddd; }
+        .results th { background-color: #f0f0f0; font-weight: bold; font-size: 18px; }
+        img { width: 50px; height: 50px; border-radius: 50%; }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</nav>
+<h1>Voting Results</h1>
+<p>Here are the results of the recent election:</p>
+<section class="results">
+    <table>
+        <thead>
+            <tr>
+                <th>Candidate</th>
+                <th>Votes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in results %}
+            <tr>
+                <td>{{ r['name'] }}</td>
+                <td>{{ r['votes'] }} Vote(s)</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+</body>
+</html>
